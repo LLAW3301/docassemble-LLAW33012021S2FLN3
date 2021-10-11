@@ -1,0 +1,226 @@
+objects:
+  - recipient: Individual
+---
+mandatory: True
+event: welcome_screen
+question: Welcome screen
+subquestion: |
+  Welcome to FLN3. We have designed this app to make reporting assistance animal accomodations refusals quick and easy.
+
+  **Disclaimer: This application does not provide legal advice and should not be taken    as such. This should not be considered a legal document.**
+buttons:
+  - I agree and wish to continue: continue
+  - No I do not agree and wish to exit: exit
+---
+mandatory: True
+code: |
+  from datetime import date
+  from datetime import datetime
+  now = datetime.now()
+  todays_date = str(date.today())
+  current_time = now.strftime("%H:%M:%S")
+  
+  if(submitter == "myself"):
+    phonenumberquestion = "What is your phone number?"
+    emailquestion = "What is your email address?"
+    pronoun = "you"
+    pz_fname = s_fname
+    pz_lname = s_lname
+  else:
+    phonenumberquestion = "What is the phone number of the refused person?"
+    emailquestion = "What is the email address of the refused person?"
+    pronoun = "they"
+    s_fname
+    s_lname
+    pz_fname
+    pz_lname
+  
+  pz_phoneno
+  pz_email
+  
+  #email
+  recipient.name.first = pz_fname
+  recipient.name.last = pz_lname
+  recipient.email = pz_email
+  #send_email(to=recipient, template=notification)
+  
+  
+  if(transportOption == "other"):
+   transportType
+  elif(transportOption == "hotel"):
+   acco_StoreName
+  acco_Address # Same question as other address details
+  inc_date
+  inc_time
+  if(staffHasReason):
+   staffReason
+  if(staffRequestedPaperwork):
+    IDWasShown
+    if(IDWasShown == False):
+      notUnlawful
+      if(notUnlawful == 'exit'):
+        command('exit')
+  if(supporting_evidence):
+    attached_evidence
+  else:
+    attached_evidence = False
+    
+  #review_screen
+  
+    
+  
+
+---
+question: Who is submitting the report?
+field: submitter
+buttons:
+  - Myself: myself
+  - Partner: partner
+  - Friend: friend
+  - Carer: carer
+  - Relative: relative
+  - Other: other
+---
+question: Please enter the full name of the person who has been refused transportation?
+fields:
+  - First Name: pz_fname
+    default: |
+      Peter
+  - Last Name: pz_lname
+    default: |
+      Zhao
+---
+question: What is your full name?
+fields:
+  - First Name: s_fname
+    default: |
+      Steve
+  - Last Name: s_lname
+    default: |
+      Johnson
+---
+question: ${phonenumberquestion}
+fields:
+  - Phone Number: pz_phoneno
+    default: |
+      0410929811
+---
+question: ${emailquestion}
+fields:
+  - Email: pz_email
+    default: |
+      pzhao25@gmail.com
+---
+question: "Which kind of accomodation were ${pronoun} trying to use when ${pronoun} were refused?"
+subquestion: "Please state the type of accomodation they were refused from. You can also write any other details about who refused them."
+fields:
+  - Accomodation Type: transportType
+  - Person/Organisation: transportOrg
+    required: False
+---
+question: "What was the name of the accomodation which ${pronoun} were refused entry from?"
+fields: 
+  - Accomodation: acco_StoreName
+---
+question: "What is the address of the accomodation?"
+fields: 
+  - Address: acco_Address
+  - City: acco_City
+  - State: acco_State
+    choices:
+      - ACT
+      - NSW
+      - NT
+      - QLD
+      - SA
+      - TAS
+      - VIC
+      - WA
+  - Postcode: acco_Postcode
+---
+question: "Which kind of accomodation were ${pronoun} trying to use when ${pronoun} were refused?"
+field: transportOption
+buttons:
+  - Airbnb: airbnb
+  - Hotel: hotel
+  - Other: other
+---
+question: "Did the staff state their reason for the refusal?"
+yesno: staffHasReason
+---
+question: "What was said by the staff during the refusal?"
+fields:
+  - Details: staffReason
+    input type: area
+---
+question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
+yesno: staffRequestedPaperwork
+---
+question: "Was ID provided?"
+yesno: IDWasShown
+---
+question: "When did the incident occur?"
+subquestion: "This defaults to today’s date, but you can edit it if needed"
+fields:
+  - Date: inc_date
+    datatype: date
+    default: |
+      ${ todays_date }
+---
+question: "When did the incident occur?"
+subquestion: "This defaults to today’s date, but you can edit it if needed"
+fields:
+  - Time: inc_time
+    datatype: time
+    default: |
+      ${ current_time }
+---
+question: Unfortunately, this is not unlawful as ${pronoun} did not provide ID
+subquestion: |
+  Would you like to continue anyway?
+field: notUnlawful
+buttons:
+  - Exit: exit
+  - Continue: continue
+---
+question: Do you have any supporting evidence you want to attach?
+yesno: supporting_evidence
+---
+question: Please add any files e.g. screenshots, photos, your documentation.
+fields:
+  - Attachments: attached_evidence
+    datatype: file
+---
+mandatory: True
+event: review_screen
+question: Review your details  
+subquestion: |
+  Questions  | Answers
+  -------|---------
+  % if submitter == "myself":
+  Reporting on your own behalf?  | Yes
+  % endif
+  % if not submitter == "myself":
+  Reporting on your own behalf?  | No
+  Submitter's Name  | ${s_fname} ${s_lname}
+  Submitter's relation to refused person  | ${submitter}
+  % endif
+  Refused person's name | ${pz_fname} ${pz_lname}
+  Refused person's email | ${pz_email}
+  Refused person's phone number | ${pz_phoneno}
+buttons:
+  - Generate Report: continue
+---
+mandatory: True
+question: Here is your document.
+attachment:
+  docx template file: docassembleproject.docx
+---
+template: notification
+subject: |
+  Greetings, ${ pz_fname }!
+content: |
+  This is an e-mail sent from a
+  **docassemble** interview.
+
+  Have a nice day!
