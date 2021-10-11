@@ -5,9 +5,9 @@ mandatory: True
 event: welcome_screen
 question: Welcome screen
 subquestion: |
-  Welcome to FLN3. We have designed this app to make reporting assistance animal accomodations refusals quick and easy.
+  This is the Refusal Report System Against Assitance Animals. The app will guide you through a series of questions to generate a report to help document acts of discrimination.
 
-  **Disclaimer: This application does not provide legal advice and should not be taken    as such. This should not be considered a legal document.**
+  **Disclaimer: The report generated from this application summarises a complaint consisting basic information. This application does not give legal advice.**
 buttons:
   - I agree and wish to continue: continue
   - No I do not agree and wish to exit: exit
@@ -71,7 +71,7 @@ code: |
   
 
 ---
-question: Who is submitting the report?
+question: Who is reporting the incident?
 field: submitter
 buttons:
   - Myself: myself
@@ -81,7 +81,7 @@ buttons:
   - Relative: relative
   - Other: other
 ---
-question: Please enter the full name of the person who has been refused transportation?
+question: Please enter the full name of the person who has been refused accomodation?
 fields:
   - First Name: pz_fname
     default: |
@@ -143,24 +143,25 @@ field: transportOption
 buttons:
   - Airbnb: airbnb
   - Hotel: hotel
+  - Rental: rental
   - Other: other
 ---
-question: "Did the staff state their reason for the refusal?"
+question: "Was a reason for refusal provided?"
 yesno: staffHasReason
 ---
-question: "What was said by the staff during the refusal?"
+question: "What was the reason for refusal?"
 fields:
   - Details: staffReason
     input type: area
 ---
-question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
+question: "Was accreditation for the Assistance Animal requested?"
 yesno: staffRequestedPaperwork
 ---
-question: "Was ID provided?"
+question: "Was accreditation for the Assitance Animal provided?"
 yesno: IDWasShown
 ---
 question: "When did the incident occur?"
-subquestion: "This defaults to today’s date, but you can edit it if needed"
+subquestion: "This defaults to today’s date, please change as required"
 fields:
   - Date: inc_date
     datatype: date
@@ -168,25 +169,25 @@ fields:
       ${ todays_date }
 ---
 question: "When did the incident occur?"
-subquestion: "This defaults to today’s date, but you can edit it if needed"
+subquestion: "This defaults to current time, please change as required"
 fields:
   - Time: inc_time
     datatype: time
     default: |
       ${ current_time }
 ---
-question: Unfortunately, this is not unlawful as ${pronoun} did not provide ID
+question: Unfortunately, as ${pronoun} did not provide evidence of your Assistance Animal's accreditation, this refusal is not unlawful under s 54 of the Disability Discrimination Act 1992 (Cth). If you continue, you may be unsucessful in reporting this refusal.
 subquestion: |
-  Would you like to continue anyway?
+  Knowing this, would you like to proceed anyway?
 field: notUnlawful
 buttons:
   - Exit: exit
   - Continue: continue
 ---
-question: Do you have any supporting evidence you want to attach?
+question: Do you have any further supporting evidence of this incident that you would like to attach to this report?
 yesno: supporting_evidence
 ---
-question: Please add any files e.g. screenshots, photos, your documentation.
+question: Please add any files. This may include booking confirmation, screenshots, photos, videos, or any relevant documentation.
 fields:
   - Attachments: attached_evidence
     datatype: file
