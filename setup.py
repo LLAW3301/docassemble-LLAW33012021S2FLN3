@@ -45,7 +45,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.LLAW33012021S2FLN3',
       version='0.0.1',
       description=('A docassemble extension.'),
-      long_description='# docassemble.LLAW33012021S2FLN3\n\nA docassemble extension.\n\n## Author\n\nYI-LYNN TEH, teh0047@flinders.edu.au\n\n',
+      long_description='# docassemble.LLAW33012021S2FLN3\r\n\r\n## FLN3 : Paws Rights refusal for accomodation app\r\n\r\nThe FLN3 Paws Rights Accomodation Refusal application aids users in SA with disabilities to report instances of discrimination against Assistance Animals by refusing accomodation. The app helps generate a report which may be sent to the SA Equal Opportunity Commission. The app generated PDF can then be sent to the user via email.\r\n\r\n## Authors\r\nPeter Zhao, zhao0503@flinders.edu.au\r\nYi-Lynn Teh, teh0047@flinders.edu.au\r\nAlex Habib, habi0041@flinders.edu.au\r\nMichelle Samuel, samu0055@flinders.edu.au\r\nCassandra Newsham, news0025@flinders.edu.au\r\n',
       long_description_content_type='text/markdown',
       author='YI-LYNN TEH',
       author_email='teh0047@flinders.edu.au',
