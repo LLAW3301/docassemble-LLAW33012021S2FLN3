@@ -45,6 +45,8 @@ field: acco_Options
 buttons:
   - Airbnb: Airbnb
   - Hotel: Hotel
+  - BNB: Bnb
+  - Caravan Park: Caravan park
   - Other: Other
 ---
 question: "What is the address of the accomodation?"
