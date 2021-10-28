@@ -35,7 +35,7 @@ metadata:
     - name: Peter Zhao, Yi-Lynn Teh, Cassandra Newsham, Michelle Samuel, and Alex Habib.
       organization: Flinders University
   revision_date: 2021-10-25
-  exit url: https://www.dpti.sa.gov.au/contact_us/compliments_and_complaints
+  exit url: https://www.eoc.sa.gov.au/complaints/making-a-complaint
 --- 
 mandatory: True
 event: welcome_screen
@@ -47,7 +47,7 @@ subquestion: |
 buttons:
   - I agree and wish to continue: continue
   - I do not agree and wish to exit: exit
-    url: https://www.dpti.sa.gov.au/contact_us/compliments_and_complaints
+    url: https://www.eoc.sa.gov.au/complaints/making-a-complaint
 ---
 
 mandatory: True
@@ -93,7 +93,7 @@ code: |
     if(IDWasShown == False): #if they didnt show ID it will show it is unlawful
       notUnlawful
       if(notUnlawful == 'exit'): #exiting app
-        message("Exit screen","Thanks for using the FLN3 reporting app!",url="https://www.dpti.sa.gov.au/contact_us/compliments_and_complaints")
+        message("Exit screen","Thanks for using the FLN3 reporting app!",url="https://www.eoc.sa.gov.au/complaints/making-a-complaint")
   else:
     IDWasShown = "N/A"
   if(supporting_evidence): #attaching evidence

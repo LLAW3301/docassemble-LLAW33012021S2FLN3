@@ -17,6 +17,8 @@ subquestion: |
   Refused person's name | <div class="review-input">[FIELD refused_person.name.first] [FIELD refused_person.name.last]</div> 
   Refused person's email | <div class="review-input">[FIELD refused_person.email]</div>
   Refused person's phone number | <div class="review-input">[FIELD pz_phoneno]</div>
+  Accomodation address | <div class="review-input">[FIELD acco_Address]</div>
+  Accomodation postcode | <div class="review-input">[FIELD acco_Postcode]</div>
 fields: 
   - SFNAME: submitter.name.first
   - SLNAME: submitter.name.last
@@ -24,5 +26,7 @@ fields:
   - RLNAME: refused_person.name.last
   - EMAIL: refused_person.email
   - PHONE: pz_phoneno
+  - ADDRESS: acco_Address
+  - POSTCODE: acco_Postcode
 continue button field: review
 ---
