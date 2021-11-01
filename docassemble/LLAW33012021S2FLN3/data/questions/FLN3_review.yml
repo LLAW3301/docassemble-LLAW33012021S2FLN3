@@ -1,5 +1,5 @@
 mandatory: True
-question: Review your details  #assigning variables to fields so they are editable
+question: Please review your details  #assigning variables to fields so they are editable
 subquestion: |
   <! –– This is to ensure that additional fields are not shown on the bottom of table if the submitter details are not rendered -->
   <div style="display: none">[FIELD submitter.name.first][FIELD submitter.name.last]     </div>

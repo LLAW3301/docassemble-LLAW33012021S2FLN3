@@ -1,8 +1,10 @@
 mandatory: True
 event: final_screen
-question: Final Report
+question: Thank you
 subquestion: |
 
+  Thank you for using the FLN3 Accomodation refusal app.
+  
   Here is your document.
   
   <a class="btn btn-primary" href=${ report.url_for(attachment=True) }>Download Report</a>
