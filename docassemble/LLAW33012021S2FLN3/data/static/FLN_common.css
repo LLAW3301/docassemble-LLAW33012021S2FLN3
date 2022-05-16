@@ -1,0 +1,226 @@
+/* This file is a CSS or Cascading Style Sheet.  It is how
+   the look and feel of web pages is controlled.  You don't need know
+   too much about how CSS works.  We only use a little of it to contol
+   the look and feel of our apps.  If you are interested in CSS there
+   are many online references 
+   (eg: https://developer.mozilla.org/en-US/docs/Web/CSS)
+*/
+
+/* This is a style or a 'class'.  This class is part of a 'Bootstrap' theme.
+   Docassemble makes use of Bootstrap themes.  Bootstrap is what provides the
+   navbar at the top, the style of the buttons.  It is also what allows the
+   website to run on computers and iPads and smartphones.  We can customise
+   elements of the theme to suit our needs.  That is what the next few classes
+   do.  For more information on Bootstrap check out https://getbootstrap.com
+*/
+.navbar{
+  /* All colours in IT are set using RGB (ie: Red, Green, Blue) values.
+     Each value of red, green and blue is a number between 0 and 255.
+     Comon colour values are:
+     - red:    rgb(255, 0, 0)
+     - blue:   rgb(0, 255, 0)
+     - green:  rgb(0, 0, 255)
+     - yellow: rgb(0, 255, 255)
+     - black:  rgb(0, 0, 0)
+     - white:  rgb(255, 255, 255)
+     The whole spectrum of colours can be represented by any combination
+     of RGB values.  To choose a colour you need to know its RGB value.
+     To work that out, use MS Paint or Excel to set a colour.  Most software
+     comes with colour picking software that will show you the RGB values
+     for any colour you pick
+  */
+  /* Flinders gold */
+  background-color: rgb(255,211,0) !important; /* rgb(255,217,102) */
+}
+.navbar .navbar-brand{
+  color : #000;
+  font-weight: bolder;
+  font-size: 2.0em;
+}
+.navbar .navbar-brand:hover{
+  color: #000;
+}
+
+.navbar .nav-item a{
+  color: #000 !important;
+}
+
+.navbar .dropdown-menu{
+  /* the rgba() function works just like rgb in that
+     it sets a colour.  But the fourth element sets an
+     'alpha' or transaparency value.  Here we are saying
+     to set the transparency to 30%
+  */
+  background-color: rgba(255,255,255,0.3);
+}
+.dropdown-item:hover{
+  background-color: rgba(255,255,255,0.3);
+}
+.navbar-brand .media {
+  margin-top: -0.1em;
+}
+.navbar-brand {
+  line-height: 1em;
+}
+
+/* style the back button */
+.navbar form button{
+  border: 0;
+  margin-right: 0.5em;
+  color: #fff !important;
+  /* Flinders navy */
+  background-color: rgba(0, 47, 96) !important; /* #3305A7 #343a40 #E0782C #6c757d #FFAE00 #EF8817 */
+  border-color: rgba(0,0,0,0) !important; /* #EF8817 */
+  border-radius: 0.25rem !important;
+  font-size: 1.1rem;
+  padding: 0.275rem 0.85rem 0.375rem 0.65rem;
+}
+.navbar form button:hover{
+  color: #fff !important;
+  /* Flinders navy, darkened */
+  background-color: rgba(0, 24, 48) !important; /* #1C0359 #000000 #C46827, #5a6268 */
+  border-color: rgba(0,0,0,0) !important; /* #C46827 */
+  border-radius: 0.25rem !important;
+}
+.navbar form button:focus {
+  outline-width: 0px;
+  outline-color: rgb(255, 255, 255);
+  outline-style: none;
+  outline-width: 0px;
+  box-shadow: 0 0 0 0.2rem #268fff80 !important; /* #343a4080 #C4682780 */
+}
+
+/* use dark blue for most primary buttons */
+.btn-primary {
+  /* Flinders navy */
+  background-color: rgba(0, 47, 96) !important; /* #3305A7 */
+  border-color: rgba(0, 47, 96) !important; /* #3305A7 */
+  /* font-weight: bold !important; */
+}
+.btn-primary:hover {
+  /* Flinders navy, darkened */
+  background-color: rgba(0, 24, 48) !important; /* #1C0359 */
+  border-color: rgba(0, 24, 48) !important; /* #1C0359 */
+}
+
+/*.btn-secondary {
+  font-weight: bold !important;
+}*/
+
+/* keep default blue/red colours on first screen */
+fieldset.continue-exit-buttons div .btn-primary {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+fieldset.continue-exit-buttons div .btn-primary:hover {
+  background-color: #0069d9 !important;
+  border-color: #0069d9 !important;
+}
+
+/* keep default blue/red colours for yes no button screens */
+fieldset.yes-no-buttons div .btn-primary:nth-of-type(1) {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+fieldset.yes-no-buttons div .btn-primary:nth-of-type(1):hover {
+  background-color: #0069d9 !important;
+  border-color: #0069d9 !important;
+}
+fieldset.yes-no-buttons div .btn-primary:nth-of-type(2) {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+fieldset.yes-no-buttons div .btn-primary:nth-of-type(2):hover {
+  background-color: #c82333 !important;
+  border-color: #c82333 !important;
+}
+
+.da-pad-for-navbar  { padding-top: 76px; }
+.da-top-for-navbar  { top: 76px;         }
+
+
+fieldset.multicolor-buttons div button:nth-of-type(6n+0) {
+  background-color: #0069d9 !important;
+  border-color: #0069d9 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+1) {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+2) {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+3) {
+  background-color: #0D6709 !important;
+  border-color: #0D6709 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+4) {
+  background-color: rgb(0,255,255) !important;
+  border-color: #123456 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+5) {
+  background-color: rgb(255,0,255) !important;
+  border-color: #123456 !important;
+}
+
+fieldset.multicolor-buttons div button:nth-of-type(6n+0):hover {
+  background-color: #004EA4 !important;
+  border-color: #004EA4 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+1):hover {
+  background-color: #140666 !important;
+  border-color: #140666 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+2):hover {
+  background-color: #AE1E2C !important;
+  border-color: #AE1E2C !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+3):hover {
+  background-color: #083D05 !important;
+  border-color: #083D05 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+4):hover {
+  background-color: rgb(100,255,255) !important;
+  border-color: #FF0000 !important;
+}
+fieldset.multicolor-buttons div button:nth-of-type(6n+5):hover {
+  background-color: rgb(255,100,255) !important;
+  border-color: #FF0000 !important;
+}
+
+.full-width-field, .full-width-field .dainput-embedded, .half-width-field .dainput-embedded {
+  display: inline;
+  position: relative;
+  width: 100% !important;
+}
+.half-width-field {
+  display: inline;
+  position: relative;
+  width: 50%;
+}
+
+.review-table td {
+  vertical-align: middle;
+}
+.review-table thead {
+  font-weight: 400;
+}
+
+#incident-info, .refusal-map-container {
+  margin-bottom: 1em;
+}
+
+/* enlarge buttons on most screens */
+.form-actions, .refusal-map-container {
+  font-size: 1.2em;
+}
+.form-actions .btn, .large-buttons .btn {
+  font-size: 1em;
+  padding: 0.375em 0.75em 0.375em 0.75em;
+}
+
+/* prevent buttons on selected screens from being enlarged */
+.default-size-buttons .form-actions {
+  font-size: 1em;
+}
