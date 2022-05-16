@@ -1,5 +1,6 @@
 /* Navbar main colour */
-.navbar{background-color: rgb(255,218,108) !important;}
+/* .navbar{background-color: rgb(255,218,108) !important;} */
+.navbar{background-color: rgb(255,211,0) !important;}
 
 .navbar .navbar-brand{
   color : #000;
@@ -10,9 +11,11 @@
 
 .navbar .nav-item a{color: #000 !important;}
 
-.navbar .dropdown-menu{background-color: rgba(255,218,108,0.5);}
+/*.navbar .dropdown-menu{background-color: rgba(255,218,108,0.5);}*/
+.navbar .dropdown-menu{background-color: rgba(255,211,0,0.5);}
 
-.dropdown-item:hover{background-color: rgba(255,218,108,0.8);}
+/*.dropdown-item:hover{background-color: rgba(255,218,108,0.8);}*/
+.dropdown-item:hover{background-color: rgba(255,211,0,0.8);}
 
 .navbar-brand .media {margin-top: -0.1em;}
 
@@ -23,8 +26,10 @@
   border: 0;
   margin-right: 0.5em;
   color: #fff !important;
-  background-color: rgb(255,218,108) !important;
-  border-color: rgba(255,218,108) !important;
+  /*background-color: rgb(255,218,108) !important;*/
+  background-color: rgb(255,211,0) !important;
+  /*border-color: rgba(255,218,108) !important;*/
+  border-color: rgba(255,211,0) !important;
   border-radius: 0.25rem !important;
   font-size: 1.1rem;
   padding: 0.275rem 0.85rem 0.375rem 0.65rem;
@@ -50,8 +55,8 @@
 
 /* Primary Buttons */
 .btn-primary {
-  background-color: rgba(34,177,76,0.5) !important;
-  border-color: rgba(34,177,76) !important;
+  background-color: rgba(0, 47, 96, 0.5) !important;
+  border-color: rgba(0, 47, 96) !important;
   /* font-weight: bold !important; */
 }
 .btn-primary:hover {
@@ -62,8 +67,8 @@
 
 /* keep default blue/red colours on first screen */
 fieldset.continue-exit-buttons div .btn-primary {
-  background-color: rgb(34,177,76) !important;
-  border-color: rbg(34,177,76) !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
 }
 fieldset.continue-exit-buttons div .btn-primary:hover {
   background-color: #0069d9 !important;

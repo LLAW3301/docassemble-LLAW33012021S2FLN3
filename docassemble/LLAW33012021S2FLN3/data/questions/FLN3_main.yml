@@ -2,16 +2,18 @@ objects:
   - refused_person: Individual
   - submitter: Individual
   - sender: Individual
+  - TransparentLogo: DAStaticFile.using(filename='paws_rights_logo_transparent.png')
   - YLTlogo: DAStaticFile.using(filename='FLN3_logo.png')
 ---
-Features:
-  css: FLN3.css
+features:
+  css: FLN_common.css
   debug: False
   hide standard menu: True
 ---
 mandatory: True
 code: |
-  set_parts(logo='<img src="' + YLTlogo.url_for() + '" style="height: 75px;">')
+  #set_parts(logo='<img src="' + YLTlogo.url_for() + '" style="height: 75px;">')
+  set_parts(logo='<img src="' + TransparentLogo.url_for() + '" style="height: 50px;">')
 ---
 # Modify the post default screen part to attribute work to Flinders and your client
 default screen parts:
@@ -30,7 +32,7 @@ metadata:
   title: |
     Paws Rights
   description: |
-    A quick and easy way to report an accomodation refusal in South Australia.
+    A quick and easy way to report an accommodation refusal in South Australia.
   authors:
     - name: Peter Zhao, Yi-Lynn Teh, Cassandra Newsham, Michelle Samuel, and Alex Habib.
       organization: Flinders University
@@ -39,15 +41,23 @@ metadata:
 --- 
 mandatory: True
 event: welcome_screen
-question: "Welcome to FLN3 reporting app"
+question: "Paws Rights"
 subquestion: |
- Welcome to FLN3. We have designed this app to make reporting assistance animal accomodations refusals quick and easy.
+ <b>Paws Rights</b> has been designed to make documenting assistance animal accommodation refusals quick and easy.
  
-  **Disclaimer: This application does not provide legal advice and should not be taken    as such. This should not be considered a legal document.**
+   **This application does not provide legal advice and should not be taken as such. This should not be considered a legal document.** 
+   
+   This application will collect information for research and reporting purposes.
+   
+   By clicking the **Continue** button you agree to the [Consent Form](${url_of('Paws_Rights_Information_Sheet.pdf')}).
 buttons:
-  - I agree and wish to continue: continue
-  - I do not agree and wish to exit: exit
+  - I agree & wish to continue: continue
+  - I do not agree & wish to exit: exit
     url: https://www.eoc.sa.gov.au/complaints/making-a-complaint
+script: |
+  <script>
+    $(".da-field-buttons").addClass("continue-exit-buttons");
+  </script>
 ---
 
 mandatory: True
@@ -90,18 +100,20 @@ code: |
     staffReason = "N/A" #assigning N/A easier for template
   if(staffRequestedPaperwork): #asking if the staff asked for paperwork
     IDWasShown #if id was shown we will continue to ask if they showed ID
-    if(IDWasShown == False): #if they didnt show ID it will show it is unlawful
-      notUnlawful
-      if(notUnlawful == 'exit'): #exiting app
-        message("Exit screen","Thanks for using the FLN3 reporting app!",url="https://www.eoc.sa.gov.au/complaints/making-a-complaint")
-  else:
-    IDWasShown = "N/A"
+    #if(IDWasShown == False): #if they didnt show ID it will show it is unlawful
+    #  IDWasShown = "No"
+      #notUnlawful
+      #if(notUnlawful == 'exit'): #exiting app
+      #  message("Exit screen","Thanks for using the FLN3 reporting app!",url="https://www.eoc.sa.gov.au/complaints/making-a-complaint")
+    #else:
+    #  IDWasShown = "Yes"
   if(supporting_evidence): #attaching evidence
     attached_evidence
   else: #leaving evidence blank
     attached_evidence = []
   review #going to review screen
   send_email(to=refused_person, sender=sender, template=email_template, attachments=[report]) #sending email
+  stats_email_sent = send_email(to="amanda.muller@flinders.edu.au", sender=sender, template=email_template, attachments=[report])
 ---
 include:
   - FLN3_questions.yml 
