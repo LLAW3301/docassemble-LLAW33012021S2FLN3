@@ -1,0 +1,130 @@
+features:
+  css: question.css
+---
+include:
+  - FLN3_review.yml
+  - FLN3_finalReport.yml
+---
+question: Who is submitting the report?
+field: who_is_submitter
+buttons:
+  - Myself: Myself
+  - Partner: Partner
+  - Friend: Friend
+  - Carer: Carer
+  - Relative: Relative
+  - Other: Other
+---
+question: Please enter the full name of the person who has been refused entry?
+fields:
+  - First Name: refused_person.name.first
+    default: Mia
+  - Last Name: refused_person.name.last
+    default: Teh
+---
+question: What is your full name?
+fields:
+  - First Name: submitter.name.first
+    default: Peter
+  - Last Name: submitter.name.last
+    default: Zhao
+---
+question: ${phonenumberquestion}
+fields:
+  - Phone Number: pz_phoneno
+    default: 0410929811
+---
+question: ${emailquestion}
+fields:
+  - Email: refused_person.email
+    datatype: email
+    default: pzhao25@gmail.com
+---
+question: "Which kind of accomodation were ${pronoun} trying to use when ${pronoun} were refused?"
+field: acco_Options
+buttons:
+  - Airbnb: Airbnb
+  - Hotel: Hotel
+  - BNB: Bnb
+  - Caravan Park: Caravan park
+  - Other: Other
+---
+question: "What is the address of the accomodation?"
+fields: 
+  - Address: acco_Address
+    default: 57 Gouger St
+  - Postcode: acco_Postcode
+    default: 5000
+---
+question: "Did the staff state their reason for the refusal?"
+yesno: staffHasReason
+---
+question: "What was the reason for the refusal?"
+fields:
+  - Details: staffReason
+    input type: area
+    default: I do not like dog hair
+---
+question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
+yesno: staffRequestedPaperwork
+---
+question: "Was accreditation of an Assistance Animal provided?"
+yesno: IDWasShown
+---
+question: Please note
+subquestion: |
+ Under section 54A of the Disability Discrimination Act it is not unlawful for an accommodation provider to request, that someone with an assistance animal produces evidence that the assistance animal is trained by an accredited training body to meet standards of hygiene and behavior appropriate for an animal in a public place.
+ 
+ If you choose to submit a complaint to the Equal Opportunities Commission, the Commission will consider all the facts of the complaint you have submitted to determine whether an act of discrimination has taken place.
+ 
+ Would you like to continue anyway?
+field: notUnlawful
+buttons:
+  - Continue: continue
+  - Exit: exit
+---
+question: "What was the date when the incident occurred?"
+subquestion: "This defaults to today’s date, but you can edit it if needed"
+fields:
+  - Date: inc_date
+    datatype: date
+    default: |
+      ${ today() }
+---
+question: "What was the time when the incident occurred?"
+subquestion: "This defaults to the current time, but you can edit it if needed"
+fields:
+  - Time: inc_time
+    datatype: time
+    default: |
+      ${ current_time }
+---
+question: Do you have any supporting evidence you want to attach?
+yesno: supporting_evidence
+---
+question: |
+  Please add any files e.g. screenshots, photos, your documentation.
+fields:
+  - Attachments: attached_evidence
+    datatype: files
+    accept: |
+      "image/jpeg, image/png, image/jpg"
+---
+
+attachment:
+  name: report
+  filename: acco-refusal-report-${todays_date}
+  docx template file: Jinja.docx
+  variable name: report
+  valid formats:
+    - pdf
+---
+template: email_template
+subject: |
+  Accomodation Refusal Report
+content: |
+ Dear, ${refused_person.name.first}
+
+  Your accomodation refusal report is attached.
+
+  Thank you
