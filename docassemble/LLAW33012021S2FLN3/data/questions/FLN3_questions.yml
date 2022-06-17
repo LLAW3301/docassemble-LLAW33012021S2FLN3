@@ -18,27 +18,21 @@ buttons:
 question: Please enter the full name of the person who has been refused entry?
 fields:
   - First Name: refused_person.name.first
-    default: Mia
   - Last Name: refused_person.name.last
-    default: Teh
 ---
 question: What is your full name?
 fields:
   - First Name: submitter.name.first
-    default: Peter
   - Last Name: submitter.name.last
-    default: Zhao
 ---
 question: ${phonenumberquestion}
 fields:
   - Phone Number: pz_phoneno
-    default: 0410929811
 ---
 question: ${emailquestion}
 fields:
   - Email: refused_person.email
     datatype: email
-    default: pzhao25@gmail.com
 ---
 question: "Which kind of accomodation were ${pronoun} trying to use when ${pronoun} were refused?"
 field: acco_Options
@@ -52,9 +46,7 @@ buttons:
 question: "What is the address of the accomodation?"
 fields: 
   - Address: acco_Address
-    default: 57 Gouger St
   - Postcode: acco_Postcode
-    default: 5000
 ---
 question: "Did the staff state their reason for the refusal?"
 yesno: staffHasReason
@@ -63,7 +55,6 @@ question: "What was the reason for the refusal?"
 fields:
   - Details: staffReason
     input type: area
-    default: I do not like dog hair
 ---
 question: "Were you asked to show accredited Assistance Dog identification or paperwork?"
 yesno: staffRequestedPaperwork
